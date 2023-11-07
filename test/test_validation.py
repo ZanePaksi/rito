@@ -8,7 +8,7 @@ import os
 LOGGER = logging.getLogger(__name__)
 TEST_VALIDATORS = [rito.Validator.r5(), rito.Validator.r4(), rito.Validator.stu3()]
 TEST_RESOURCES = ['patient', 'organization', 'observation']
-DIRECTORY_PATH = os.path.join(os.path.dirname(__file__), Path('resources'))
+DIRECTORY_PATH = os.path.join(Path(__file__).resolve().parent, Path('data'))
 
 
 @pytest.fixture(name='resource', scope='module', params=TEST_RESOURCES)
