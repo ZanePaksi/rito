@@ -1,6 +1,5 @@
 include rito/schemas/*
 
-include test/*
-include test/data/*
+graft test *
 
 
