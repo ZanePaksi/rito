@@ -1,4 +1,6 @@
-include rito/schemas/fhir.r4.schema.json
-include rito/schemas/fhir.stu3.schema.json
+include rito/schemas/*
+
+include test/*
+include test/data/*
 
 
