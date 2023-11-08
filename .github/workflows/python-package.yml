@@ -30,8 +30,8 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install -e .
     - name: Test with pytest
-      working-directory: ${{ github.workspace }}
       run: |
         ls test/data
+        ls
         
-        python -m pytest
+        pytest
