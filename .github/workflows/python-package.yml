@@ -31,7 +31,7 @@ jobs:
         pip install -e .
     - name: Test with pytest
       run: |
-        ls test/data
+        ls test/data/r5
         ls
         
         pytest
