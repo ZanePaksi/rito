@@ -98,7 +98,7 @@ class Validator:
         for schema_error in sorted(schema_error.context, key=lambda e: e.schema_path):
             sub_schema_error = schema_error.schema_path
             schema_index = sub_schema_error[0]
-
+            print(sub_schema_error)
             if 'resourceType' in sub_schema_error and not located_schema:
                 if rt_error_count < schema_index:
                     located_schema.append(rt_error_count)
