@@ -5,6 +5,7 @@ import json
 import os
 import glob
 import re
+from typing import Union
 
 
 class Validator:
@@ -31,17 +32,31 @@ class Validator:
     def normalize_file_name(file_path: str) -> str:
         return re.split(r"/\\", file_path)[-1]
 
+    @staticmethod
+    def validate_json(file: str) -> Union[dict, str]:
+        json_resource: Union[dict, str] = {}
+        try:
+            json_resource = json.loads(file)
+        except json.JSONDecodeError as json_error:
+            json_resource = str(json_error)
+        except TypeError as type_error:
+            json_resource = str(type_error)
+        finally:
+            return json_resource
+
     def file_validate(self, file_path: str) -> dict:
         results = {}
         file = open(file_path, encoding="utf8").read()
         file_name = self.normalize_file_name(file_path)
         json_resource = self.validate_json(file)
 
+        # if str, JSON is invalid, return json validation issues
         if isinstance(json_resource, str):
-            # JSON is invalid, return json validation issues
             results.update({file_name: json_resource})
         else:
-            results.update(self.fast_validate(json_resource))
+            results.update(self.fast_validate(json_resource, file_name))
+
+        return results
 
     def dir_validate(self, directory_path: str) -> dict:
         results = {}
@@ -75,3 +90,14 @@ class Validator:
             results.update({file_name: False})
 
         return results
+
+    def verbose_validate(self, resource: dict):
+        results = {}
+        schema_refs = self.schema.get('oneOf', [])
+        schema_definitions = [ref['$ref'] for ref in schema_refs]
+        if 'resourceType' in resource:
+            ref = f"#/definitions/{resource['resourceType']}"
+            if ref in schema_definitions:
+                schema_index = schema_definitions.index(ref)
+
+
