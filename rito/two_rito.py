@@ -1,4 +1,6 @@
-from jsonschema import Draft6Validator, ValidationError
+from referencing import Registry, Resource
+from jsonschema.exceptions import ValidationError, RefResolutionError
+from jsonschema import Draft6Validator
 from pathlib import Path
 import fastjsonschema
 import json
@@ -23,9 +25,14 @@ class Validator:
         else:
             raise LookupError(f'Unsupported schema version: {schema_version}')
 
-        self.schema = json.loads(open(self.schema_name, encoding='utf-8').read())
+        self.schema = json.loads(open(self.schema_name, encoding="utf8").read())
+        self.registry = Registry().with_resources(
+            [
+                ("http://hl7.org/fhir/json-schema/4.0", Resource.from_contents(self.schema))
+            ],
+        )
 
-        self.validator = Draft6Validator(self.schema)
+        self.validator = Draft6Validator(self.schema, registry=self.registry)
         self.fast_validator = fastjsonschema.compile(self.schema)
 
     @staticmethod
@@ -66,7 +73,7 @@ class Validator:
         files = self.build_file_index(directory_path)
 
         for file in files:
-            results.update(self.file_validate(file))
+            results.update(self.file_validate(file, verbose=verbose))
 
         return results
 
@@ -83,7 +90,6 @@ class Validator:
         return files_in_dir
 
     def locate_sub_schema(self, json_resource: dict) -> list:
-
         schema_refs = self.schema.get('oneOf', [])
         schema_definitions = [ref['$ref'] for ref in schema_refs]
         schema_index = []
@@ -126,7 +132,8 @@ class Validator:
         if schema_index:
             # jsonschema validate returns noneType if valid, and raises ValidationError if invalid
             try:
-                self.validator.validate(json_resource, self.schema)
+                self.validator.check_schema(self.schema)
+                self.validator.validate(json_resource)
                 verbose_results.update({identifier: True})
             except ValidationError as error:
                 for sub_error in error.context:
