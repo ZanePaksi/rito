@@ -1,3 +1,9 @@
+# Rito - FHIR Validator
+
+[![Pythons](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-3810/)
+![example workflow](https://github.com/ZanePaksi/rito/actions/workflows/flake8.yml/badge.svg)
+![example workflow](https://github.com/ZanePaksi/rito/actions/workflows/pytest.yml/badge.svg)
+
 ## The Path Forward
 Rito is a fork of my college capstone, Project Fhir Lens, a first iteration at validating FHIR R4 and R3.
 Rito is a large refactor of the project to reflect the skills I’ve gained in the industry. Before moving forward It's neccessary to 
@@ -27,6 +33,3 @@ This module does not validate that far. Meaning, false positives for validity ar
 * [jsonschema](https://pypi.org/project/jsonschema/) - Validation framework
 * [HL7 FHIR Specs](http://hl7.org/fhir/directory.html) - Documentation and schemas
 
-### Acknowledgments
-
-* HL7 (Documentation and examples) - https://www.hl7.org/
