@@ -6,6 +6,21 @@
 
 ---
 
+## Limitations
+Rito utilizes JSON Schemas provided by HL7.
+
+A main caveat with this validation method is that *Rito is not connected to a terminology server*.
+This means that codeable concept 'system' URIs are not checked if they resolve. The degree of validation
+varies, but some FHIR servers will not accept unresolvable system URIs.
+
+This could result in Rito returning valid results in regard to syntax, but the resource not being 
+accepted by a FHIR server.
+
+For further details please see:
+[FHIR Validation Info](https://www.hl7.org/fhir/validation.html)
+
+---
+
 ## Setup
 
 Until I release this package on PyPI, here are some options for installing this library:
@@ -22,7 +37,7 @@ cd path/to/rito
 pip install .
 ```  
 
-After this I recommend running both pytest and flake8 to ensure everything is working correctly
+After installation I recommend running both pytest and flake8 to ensure everything is working correctly
 ```
 # cmd in project root
 pytest
@@ -103,22 +118,6 @@ Output:
     }
 }
 ```
-
----
-
-## Limitations
-Rito utilizes JSON Schemas provided by HL7.
-
-A main caveat with this validation method is that *Rito is not connected to a terminology server*.
-This means that codeable concept 'system' URIs are not checked if they resolve. The degree of validation
-varies, but some FHIR servers will not accept unresolvable system URIs.
-
-This could result in Rito returning valid results in regard to syntax, but the resource not being 
-accepted by a FHIR server.
-
-For further details please see:
-[FHIR Validation Info](https://www.hl7.org/fhir/validation.html)
-
 
 ---
 
