@@ -106,7 +106,7 @@ class Validator:
         if verbose is False, use fastjsonschema and return bool
         If verbose is True, use verbose validation and return dict with error messages
 
-        returns results: dict {file_name: bool | str}
+        returns results: dict {file_name: dict | bool}
         """
 
         results = {}
@@ -119,9 +119,9 @@ class Validator:
             results.update({file_name: json_resource})
         else:
             if verbose:
-                results.update(self.verbose_validate(json_resource, file_name))
+                results.update({file_name: self.verbose_validate(json_resource)})
             else:
-                results.update(self.fast_validate(json_resource, file_name))
+                results.update({file_name: self.fast_validate(json_resource)})
 
         return results
 
@@ -174,7 +174,7 @@ class Validator:
         If it does, append the index of that schema to schema_index and return it
         If not, return empty list
 
-        returns list[int] OR []
+        returns list[int] OR list[]
         """
 
         schema_refs = self.schema.get('oneOf', [])
@@ -188,35 +188,24 @@ class Validator:
 
         return schema_index
 
-    def fast_validate(self, json_resource: dict, file_name: str) -> dict:
+    def fast_validate(self, json_resource: dict) -> bool:
         """
         Accepts json resource or python dict, and name of file (key for results)
         Uses fastjsonschema validator
 
-        returns results: dict {file_name: bool}
+        returns fast_results: bool
         """
-
-        fast_results = {}
 
         # Fast validation passes silently, fails loudly
         try:
             self.fast_validator(json_resource)
-            fast_results.update({file_name: True})
+            fast_results = True
         except fastjsonschema.JsonSchemaException:
-            fast_results.update({file_name: False})
+            fast_results = False
 
         return fast_results
 
-    @staticmethod
-    def add_error_results(results: dict, identifier: str, error_type: str, error_msg: str) -> None:
-        """ A method for easy adding of results to dict """
-
-        if identifier in results:
-            results[identifier].update({error_type: error_msg})
-        else:
-            results.update({identifier: {error_type: error_msg}})
-
-    def verbose_validate(self, json_resource: dict, identifier: str = '') -> dict:
+    def verbose_validate(self, json_resource: dict) -> dict:
         """
         Accepts json resource or python object, and identifier (key for results)
 
@@ -229,26 +218,22 @@ class Validator:
         Use schema_index to locate correct schema errors
         update results accordingly
 
-        returns results: dict {identifier: bool | {error_type: str: error_msg: str}}
+        returns results: dict {error_type: str: error_msg: str} OR {}
         """
 
         verbose_results = {}
         schema_index = self.locate_sub_schema(json_resource)
 
-        if not identifier:
-            identifier = f"{json_resource.get('resourceType', 'resourceType')}-{json_resource.get('id')}"
-
         if schema_index:
             # jsonschema validate returns noneType if valid, and raises ValidationError if invalid
             try:
                 self.validator.validate(json_resource)
-                verbose_results.update({identifier: True})
             except ValidationError as error:
                 for sub_error in error.context:
                     if sub_error.schema_path[0] == schema_index[0]:
                         error_type = sub_error.schema_path[-1]
-                        self.add_error_results(verbose_results, identifier, error_type, sub_error.message)
+                        verbose_results.update({error_type: sub_error.message})
         else:
-            verbose_results.update({identifier: f"Unexpected resourceType: {json_resource['resourceType']}"})
+            verbose_results.update({'resourceType': f"Unexpected resourceType: {json_resource['resourceType']}"})
 
         return verbose_results
