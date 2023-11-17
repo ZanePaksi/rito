@@ -51,7 +51,7 @@ def test_valid_verbose_file_validate(validator, resource):
     file_path = TEST_DATA_BASE_PATH + f'/{fhir_version}/{resource}.json'
     result = validator.file_validate(file_path, verbose=True)
 
-    assert result[resource_name] is True
+    assert result[resource_name] == {}
 
 
 def test_valid_fast_dir_validate(validator):
@@ -71,4 +71,4 @@ def test_valid_verbose_dir_validate(validator):
     directory_path = TEST_DATA_BASE_PATH + f'/{fhir_version}'
     result = validator.dir_validate(directory_path, verbose=True)
 
-    assert result == {'observation.json': True, 'organization.json': True, 'patient.json': True}
+    assert result == {'observation.json': {}, 'organization.json': {}, 'patient.json': {}}
