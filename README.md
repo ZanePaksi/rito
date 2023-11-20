@@ -91,13 +91,11 @@ validator = rito.Validator.r5()
 resource = open("../test/data/r5/patient.json", 'r').read()
 json_resource = json.loads(resource)
 
-output = validator.fast_validate(json_resource, 'r5_patient')
+output = validator.fast_validate(json_resource)
 print(output)
 
 Output:
-{
-    "r5_patient": true
-}
+true
 ```
 
 Directly invoke verbose validation
@@ -107,15 +105,13 @@ validator = rito.Validator.r4()
 resource = open("../test/data/invalid_r4_patient.json", 'r').read()
 json_resource = json.loads(resource)
 
-output= validator.verbose_validate(json_resource, 'invalid_r4_patient')
+output= validator.verbose_validate(json_resource)
 print(output)
 
 Output:
 {
-    "invalid_r4_patient": {
-        "enum": "'males' is not one of ['male', 'female', 'other', 'unknown']",
-        "additionalProperties": "Additional properties are not allowed ('activ' was unexpected)"
-    }
+    "enum": "'males' is not one of ['male', 'female', 'other', 'unknown']",
+    "additionalProperties": "Additional properties are not allowed ('activ' was unexpected)"
 }
 ```
 
