@@ -9,7 +9,7 @@ LOGGER = logging.getLogger(__name__)
 TEST_DATA_PATH = os.path.join(Path(__file__).resolve().parent, Path('data'))
 
 TEST_VALIDATORS = {
-    'r3': rito.Validator.stu3(),
+    'r3': rito.Validator.r3(),
     'r4': rito.Validator.r4(),
     'r4b': rito.Validator.r4b(),
     'r5': rito.Validator.r5()

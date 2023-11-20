@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='rito',
-    version='2.0dev',
+    version='3dev',
     url='https://github.com/ZanePaksi/rito',
     author='Zane Paksi',
     author_email='zane.paksi@outlook.com',

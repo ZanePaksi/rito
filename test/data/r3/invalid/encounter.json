@@ -11,7 +11,7 @@
       "value": "Encounter_Roel_20130404"
     }
   ],
-  "status": "finished",
+  "status": "complete",
   "class": {
     "system": "http://hl7.org/fhir/v3/ActCode",
     "code": "AMB",
@@ -37,7 +37,7 @@
       }
     ]
   },
-  "subject": {
+  "subjec": {
     "reference": "Patient/f201",
     "display": "Roel"
   },

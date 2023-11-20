@@ -8,7 +8,7 @@ import os
 LOGGER = logging.getLogger(__name__)
 
 TEST_VALIDATORS = [
-    rito.Validator.stu3(),
+    rito.Validator.r3(),
     rito.Validator.r4(),
     rito.Validator.r4b(),
     rito.Validator.r5()
