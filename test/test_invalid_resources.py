@@ -21,6 +21,13 @@ def test_r3_file_validate_encounter():
     file_path = TEST_DATA_PATH + f'/{validator.fhir_version}/invalid/encounter.json'
     result = validator.file_validate(file_path)
 
+    assert result == {
+    "encounter.json": {
+        "enum": "'complete' is not one of ['planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown']",
+        "additionalProperties": "Additional properties are not allowed ('subjec' was unexpected)"
+    }
+}
+
 
 def test_r3_file_validate_medication():
     validator = TEST_VALIDATORS['r3']

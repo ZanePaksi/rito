@@ -1,0 +1,10 @@
+{
+  "file_v_invalid_encounter": {
+    "encounter.json": {
+        "enum": "'complete' is not one of ['planned', 'arrived', 'triaged', 'in-progress', 'onleave', 'finished', 'cancelled', 'entered-in-error', 'unknown']",
+        "additionalProperties": "Additional properties are not allowed ('subjec' was unexpected)"
+    }
+  },
+  "file_v_invalid_medication": {},
+  "file_v_invalid_procedure": {}
+}
