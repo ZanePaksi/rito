@@ -14,7 +14,7 @@ class Validator:
 
     # Version name : version number
     SUPPORTED_VERSIONS = {
-        'stu3': '3.3',
+        'r3': '3.3',
         'r4': '4.0',
         'r4b': '4.3',
         'r5': '5.0'
@@ -22,7 +22,7 @@ class Validator:
 
     def __init__(self, fhir_version: str) -> None:
         """
-        Initializing the Validator class. Options for fhir version ('stu3', 'r4', 'r4b', 'r5')
+        Initializing the Validator class. Options for fhir version ('r3', 'r4', 'r4b', 'r5')
             -> See SUPPORTED_VERSIONS class var
 
         Builds absolute path of module to locate schemas within module.
@@ -51,8 +51,8 @@ class Validator:
         self.fast_validator = fastjsonschema.compile(self.schema)
 
     @classmethod
-    def stu3(cls) -> 'Validator':
-        return cls('stu3')
+    def r3(cls) -> 'Validator':
+        return cls('r3')
 
     @classmethod
     def r4(cls) -> 'Validator':
