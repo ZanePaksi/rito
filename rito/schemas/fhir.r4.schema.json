@@ -45588,10 +45588,11 @@
         },
         "daysOfWeek": {
           "description": "Indicates which days of the week are available between the start and end Times.",
+          "type": "array",
           "items": {
-            "$ref": "#/definitions/code"
-          },
-          "type": "array"
+            "type": "string",
+            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+          }
         },
         "_daysOfWeek": {
           "description": "Extensions for daysOfWeek",

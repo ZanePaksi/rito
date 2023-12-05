@@ -1,0 +1,37 @@
+## R4
+
+- Code Enum Verification:
+
+  Conformance:
+    - CapabilityStatement:
+        - Verified
+    - StructureDefinition:
+        - Verified
+    - ImplementationGuide (Possible Change? None Made Yet *NMY):
+        - ImplementationGuide_Global, type attribute, line ~31250
+        - does not have enum for resoureType
+    - SearchParameter (Possible Change? NMY):
+        - Line ~50199, base attribute has no enum for resourceType
+        - Line ~50261, type attribute has no enum for resourceType
+    - MessageDefinition (Possible Change? NMY):
+        - MessageDefinition_Focus
+        - Line ~39417, code attribute has no enum for resourceType
+    - OperationDefinition (Possible Change? NMY):
+        - Line ~42245, resource attribute has no enum for resourceType
+        - In progress
+
+
+  Individuals:
+    - Patient:
+        - Verified
+    - Practitioner:
+        - Verified
+    - PractitionerRole (CHANGES MADE):
+        - PractitionerRole_AvailableTime, daysOfWeek attr, line ~45589
+        - Removed ref to code, added enum
+    - RelatedPerson:
+        - Verified
+    - Person:
+        - Verified
+    - Group:
+        - Verified
