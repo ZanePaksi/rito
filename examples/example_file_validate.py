@@ -7,7 +7,7 @@ import json
 def main():
     validator: rito.Validator = rito.Validator.r4()
 
-    output = validator.file_validate("../test/data/r4/graph_definition.json", verbose=True)
+    output = validator.file_validate("../test/data/r4/healthcare_service.json", verbose=True)
 
     filename = "output" + datetime.now().strftime("%m%d-%H%M-%S") + ".txt"
     with open(filename, "w") as file:

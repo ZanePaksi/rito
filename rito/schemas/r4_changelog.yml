@@ -31,6 +31,10 @@
         - GraphDefinition_Compartment (CHANGES MADE):
             - Line ~28474, code attribute has no enum
             - "enum": ["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"]
+            - CHANGED: removed ref to code, added enum
+        - ExampleScenario:
+            - ExampleScenario_Instance:
+                - Line ~25204, resourceType attribute has no enum for resourceType
 
   Individuals:
     - Patient:
@@ -38,11 +42,22 @@
     - Practitioner:
         - Verified
     - PractitionerRole (CHANGES MADE):
-        - PractitionerRole_AvailableTime, daysOfWeek attr, line ~45589
-        - Removed ref to code, added enum
+        - PractitionerRole_AvailableTime:
+            - Line ~45589, daysOfWeek attribute
+            - Removed ref to code, added enum
     - RelatedPerson:
         - Verified
     - Person:
         - Verified
     - Group:
         - Verified
+
+  Entities_1:
+    - Organization:
+        - Verified
+    - OrganizationAffiliation:
+        - Verified
+    - HealthcareService (CHANGES MADE):
+        - HealthcareService_AvailableTime:
+            - Line ~29232, daysOfWeek attribute
+            - added type string to enum

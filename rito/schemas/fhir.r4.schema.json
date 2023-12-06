@@ -29229,6 +29229,7 @@
         "daysOfWeek": {
           "description": "Indicates which days of the week are available between the start and end Times.",
           "items": {
+            "type": "string",
             "enum": [
               "mon",
               "tue",
@@ -45597,7 +45598,15 @@
           "type": "array",
           "items": {
             "type": "string",
-            "enum": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+            "enum": [
+              "mon",
+              "tue",
+              "wed",
+              "thu",
+              "fri",
+              "sat",
+              "sun"
+            ]
           }
         },
         "_daysOfWeek": {
