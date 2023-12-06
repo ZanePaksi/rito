@@ -33570,7 +33570,16 @@
         "daysOfWeek": {
           "description": "Indicates which days of the week are available between the start and end Times.",
           "items": {
-            "$ref": "#/definitions/code"
+            "type": "string",
+            "enum": [
+              "mon",
+              "tue",
+              "wed",
+              "thu",
+              "fri",
+              "sat",
+              "sun"
+            ]
           },
           "type": "array"
         },

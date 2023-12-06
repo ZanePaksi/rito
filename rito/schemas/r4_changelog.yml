@@ -61,3 +61,10 @@
         - HealthcareService_AvailableTime:
             - Line ~29232, daysOfWeek attribute
             - added type string to enum
+    - Endpoint:
+        - Line ~23488, payloadMimeType has no enum for MimeType
+        - full list of values here https://hl7.org/fhir/R4/valueset-endpoint-payload-type.html
+    - Location (CHANGES MADE):
+        - Location_HoursOfOperation:
+            - Line ~33570, daysOfWeek attribute
+            - removed ref to code in items, added enum
