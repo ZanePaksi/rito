@@ -7,19 +7,30 @@
         - Verified
     - StructureDefinition:
         - Verified
-    - ImplementationGuide (Possible Change? None Made Yet *NMY):
-        - ImplementationGuide_Global, type attribute, line ~31250
-        - does not have enum for resoureType
-    - SearchParameter (Possible Change? NMY):
+    - ImplementationGuide:
+        - ImplementationGuide_Global:
+            - Line ~31250, type attribute has no enum for resourceType
+    - SearchParameter:
         - Line ~50199, base attribute has no enum for resourceType
         - Line ~50261, type attribute has no enum for resourceType
-    - MessageDefinition (Possible Change? NMY):
-        - MessageDefinition_Focus
-        - Line ~39417, code attribute has no enum for resourceType
+    - MessageDefinition:
+        - MessageDefinition_Focus:
+            - Line ~39417, code attribute has no enum for resourceType
     - OperationDefinition (Possible Change? NMY):
         - Line ~42245, resource attribute has no enum for resourceType
-        - In progress
-
+        - OperationDefinition_Parameter:
+            - Line ~42377, type attribute has no enum for FhirAllTypes
+    - CompartmentDefinition:
+        - CompartmentDefinition_Resource:
+            - Line ~15511, code attribute has no enum for resourceType
+    - StructureMap:
+        - Verified
+    - GraphDefinition:
+        - Line ~28288, start attribute has no enum for resourceType
+        - Line ~28405, type attribute has no enum for resourceType
+        - GraphDefinition_Compartment (CHANGES MADE):
+            - Line ~28474, code attribute has no enum
+            - "enum": ["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"]
 
   Individuals:
     - Patient:

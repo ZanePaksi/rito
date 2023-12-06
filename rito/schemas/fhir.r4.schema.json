@@ -28472,8 +28472,14 @@
           "$ref": "#/definitions/Element"
         },
         "code": {
-          "description": "Identifies the compartment.",
-          "$ref": "#/definitions/code"
+          "description": "Patient | Encounter | RelatedPerson | Practitioner | Device",
+          "enum": [
+            "Patient",
+            "Encounter",
+            "RelatedPerson",
+            "Practitioner",
+            "Device"
+          ]
         },
         "_code": {
           "description": "Extensions for code",
