@@ -80,7 +80,8 @@
     {
       "daysOfWeek": [
         "thur",
-        "fri"
+        "frid",
+        "sat"
       ],
       "availableStartTime": "09:00:00",
       "availableEndTime": "12:00:00"

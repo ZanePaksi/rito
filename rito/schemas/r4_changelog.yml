@@ -1,6 +1,11 @@
 ## R4
 
 - Code Enum Verification:
+  Definitions:
+    - daysOfWeek:
+        - Added daysOfWeek as its own definition containing the daysOfWeek enum
+    - resourceType:
+        - Added resourceType as its own definition containing the resourceType enum
 
   Conformance:
     - CapabilityStatement:
@@ -45,6 +50,7 @@
         - PractitionerRole_AvailableTime:
             - Line ~45589, daysOfWeek attribute
             - Removed ref to code, added enum
+            - Removed enum, added ref to daysOfWeek definition.
     - RelatedPerson:
         - Verified
     - Person:
@@ -61,6 +67,7 @@
         - HealthcareService_AvailableTime:
             - Line ~29232, daysOfWeek attribute
             - added type string to enum
+            - Removed enum, added ref to daysOfWeek definition.
     - Endpoint:
         - Line ~23488, payloadMimeType has no enum for MimeType
         - full list of values here https://hl7.org/fhir/R4/valueset-endpoint-payload-type.html
@@ -68,3 +75,4 @@
         - Location_HoursOfOperation:
             - Line ~33570, daysOfWeek attribute
             - removed ref to code in items, added enum
+            - Removed enum, added ref to daysOfWeek definition.
