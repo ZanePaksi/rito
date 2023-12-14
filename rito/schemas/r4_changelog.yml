@@ -4,42 +4,54 @@
   Definitions:
     - daysOfWeek:
         - Added daysOfWeek as its own definition containing the daysOfWeek enum
+            - "$ref": "#/definitions/daysOfWeek"
     - resourceType:
         - Added resourceType as its own definition containing the resourceType enum
+            - "$ref": "#/definitions/resourceType"
 
   Conformance:
     - CapabilityStatement:
         - Verified
     - StructureDefinition:
         - Verified
-    - ImplementationGuide:
+    - ImplementationGuide (CHANGES MADE):
         - ImplementationGuide_Global:
             - Line ~31250, type attribute has no enum for resourceType
-    - SearchParameter:
+            - Added ref to resourceType enum
+    - SearchParameter (CHANGES MADE):
         - Line ~50199, base attribute has no enum for resourceType
-        - Line ~50261, type attribute has no enum for resourceType
-    - MessageDefinition:
+            - Added ref to resourceType enum
+        - Line ~50261, target attribute has no enum for resourceType
+            - Added ref to resourceType enum
+    - MessageDefinition (CHANGES MADE):
         - MessageDefinition_Focus:
             - Line ~39417, code attribute has no enum for resourceType
-    - OperationDefinition (Possible Change? NMY):
+                - Added ref to resourceType enum
+    - OperationDefinition (CHANGES MADE):
         - Line ~42245, resource attribute has no enum for resourceType
-        - OperationDefinition_Parameter:
+            - Added ref to resourceType enum
+        - OperationDefinition_Parameter (POSSIBLE CHANGES - NMY):
             - Line ~42377, type attribute has no enum for FhirAllTypes
-    - CompartmentDefinition:
+    - CompartmentDefinition (CHANGES MADE):
         - CompartmentDefinition_Resource:
             - Line ~15511, code attribute has no enum for resourceType
+                - Added ref to resourceType enum
     - StructureMap:
         - Verified
-    - GraphDefinition:
+    - GraphDefinition (CHANGES MADE):
         - Line ~28288, start attribute has no enum for resourceType
-        - Line ~28405, type attribute has no enum for resourceType
+            - Added ref to resourceType enum
+        - GraphDefinition_Target (CHANGES MADE):
+            - Line ~28405, type attribute has no enum for resourceType
+                - Added ref to resourceType enum
         - GraphDefinition_Compartment (CHANGES MADE):
             - Line ~28474, code attribute has no enum
             - "enum": ["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"]
             - CHANGED: removed ref to code, added enum
         - ExampleScenario:
-            - ExampleScenario_Instance:
+            - ExampleScenario_Instance (CHANGES MADE):
                 - Line ~25204, resourceType attribute has no enum for resourceType
+                    - Added ref to resourceType enum
 
   Individuals:
     - Patient:

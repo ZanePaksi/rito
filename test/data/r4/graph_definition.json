@@ -46,7 +46,7 @@
                   "compartment": [
                     {
                       "use": "requirement",
-                      "code": "Patie",
+                      "code": "Patient",
                       "rule": "identical"
                     }
                   ]

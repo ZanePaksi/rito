@@ -15550,7 +15550,7 @@
         },
         "code": {
           "description": "The name of a resource supported by the server.",
-          "$ref": "#/definitions/code"
+          "$ref": "#/definitions/resourceType"
         },
         "_code": {
           "description": "Extensions for code",
@@ -25243,7 +25243,7 @@
         },
         "resourceType": {
           "description": "The type of the resource.",
-          "$ref": "#/definitions/code"
+          "$ref": "#/definitions/resourceType"
         },
         "_resourceType": {
           "description": "Extensions for resourceType",
@@ -28327,7 +28327,7 @@
         },
         "start": {
           "description": "The type of FHIR resource at which instances of this graph start.",
-          "$ref": "#/definitions/code"
+          "$ref": "#/definitions/resourceType"
         },
         "_start": {
           "description": "Extensions for start",
@@ -28444,7 +28444,7 @@
         },
         "type": {
           "description": "Type of resource this link refers to.",
-          "$ref": "#/definitions/code"
+          "$ref": "#/definitions/resourceType"
         },
         "_type": {
           "description": "Extensions for type",
@@ -31287,7 +31287,7 @@
         },
         "type": {
           "description": "The type of resource that all instances must conform to.",
-          "$ref": "#/definitions/code"
+          "$ref": "#/definitions/resourceType"
         },
         "_type": {
           "description": "Extensions for type",
@@ -39475,7 +39475,7 @@
         },
         "code": {
           "description": "The kind of resource that must be the focus for this message.",
-          "$ref": "#/definitions/code"
+          "$ref": "#/definitions/resourceType"
         },
         "_code": {
           "description": "Extensions for code",
@@ -42283,7 +42283,7 @@
         "resource": {
           "description": "The types on which this operation can be executed.",
           "items": {
-            "$ref": "#/definitions/code"
+            "$ref": "#/definitions/resourceType"
           },
           "type": "array"
         },
@@ -50236,7 +50236,7 @@
         "base": {
           "description": "The base resource type(s) that this search parameter can be used against.",
           "items": {
-            "$ref": "#/definitions/code"
+            "$ref": "#/definitions/resourceType"
           },
           "type": "array"
         },
@@ -50298,7 +50298,7 @@
         "target": {
           "description": "Types of resource (if a resource is referenced).",
           "items": {
-            "$ref": "#/definitions/code"
+            "$ref": "#/definitions/resourceType"
           },
           "type": "array"
         },
