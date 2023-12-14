@@ -232,8 +232,19 @@ class Validator:
                 for sub_error in error.context:
                     if sub_error.schema_path[0] == schema_index[0]:
                         error_type = sub_error.schema_path[-1]
-                        verbose_results.update({error_type: sub_error.message})
+                        Validator.update_verbose_results(verbose_results, error_type, sub_error.message)
         else:
             verbose_results.update({'resourceType': f"Unexpected resourceType: {json_resource['resourceType']}"})
 
         return verbose_results
+
+    @staticmethod
+    def update_verbose_results(verbose_results: dict, error_type: str, error_message: str) -> None:
+        if error_type in verbose_results:
+            initial_value = verbose_results[error_type]
+            if isinstance(initial_value, str):
+                verbose_results.update({error_type: [initial_value, error_message]})
+            elif isinstance(initial_value, list):
+                verbose_results[error_type].append(error_message)
+        else:
+            verbose_results.update({error_type: error_message})

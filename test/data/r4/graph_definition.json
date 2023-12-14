@@ -21,7 +21,7 @@
     }
   ],
   "description": "Specify to include list references when generating a document using the $document operation",
-  "start": "Composition",
+  "start": "Compositin",
   "link": [
     {
       "path": "Composition.section.entry",
@@ -32,7 +32,7 @@
           "compartment": [
             {
               "use": "requirement",
-              "code": "Patient",
+              "code": "Patien",
               "rule": "identical"
             }
           ],
