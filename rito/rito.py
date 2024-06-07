@@ -218,7 +218,7 @@ class Validator:
         Use schema_index to locate correct schema errors
         update results accordingly
 
-        returns results: dict {error_type: str: error_msg: str} OR {}
+        returns results: dict {error_type: str, error_msg: str} OR {}
         """
 
         verbose_results = {}

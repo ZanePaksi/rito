@@ -88,3 +88,20 @@
             - Line ~33570, daysOfWeek attribute
             - removed ref to code in items, added enum
             - Removed enum, added ref to daysOfWeek definition.
+
+  Entities_2:
+    - Substance:
+        - Verified
+        - status is of type code, enum already present
+    - BiologicallyDerivedProduct:
+        - Verified
+        - productCategory, status, and scale are of type code, enums present
+    - Device:
+        - Verified
+        - status, UdiCarrier_entryType, and deviceName_type are of type code, enums present
+    - DeviceMetric:
+        - Verified
+        - operationalStatus, color, category, calibration_type, and calibration_state are of type code, enums present
+
+  Workflow:
+    - Task:
